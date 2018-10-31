@@ -1,0 +1,20 @@
+{
+    "name": "patrikpihlstrom/tempo-php",
+    "description": "Tempo REST client",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "authors": [
+        {
+            "name": "Patrik Pihlström",
+            "email": "patrik.pihlstrom@caupo.se"
+        }
+    ],
+    "autoload":    {
+        "psr-4": {
+            "patrikpihlstrom\\Tempo\\": "src"
+        }
+    },
+    "minimum-stability": "stable"
+}
