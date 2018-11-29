@@ -26,6 +26,13 @@ class Client extends \GuzzleHttp\Client
 	 */
 	public function getWorklogs($parameters)
 	{
+		if (isset($parameters['project']))
+		{
+			$project = $parameters['project'];
+			unset($parameters['project']);
+			return $this->request('GET', 'worklogs/account/' . $project . '?' . http_build_query($parameters));
+		}
+
 		return $this->request('GET', 'worklogs?' . http_build_query($parameters));
 	}
 }
