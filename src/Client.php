@@ -26,13 +26,24 @@ class Client extends \GuzzleHttp\Client
 	 */
 	public function getWorklogs($parameters)
 	{
+		$uri = 'worklogs';
+
 		if (isset($parameters['project']))
 		{
 			$project = $parameters['project'];
 			unset($parameters['project']);
-			return $this->request('GET', 'worklogs/account/' . $project . '?' . http_build_query($parameters));
+			$uri .= "/account/$project";
+		}
+		else
+		{
+			if (isset($parameters['user']))
+			{
+				$user = $parameters['user'];
+				unset($parameters['user']);
+				$uri .= "/user/$user";
+			}
 		}
 
-		return $this->request('GET', 'worklogs?' . http_build_query($parameters));
+		return $this->request('GET', $uri . '?' . http_build_query($parameters));
 	}
 }
